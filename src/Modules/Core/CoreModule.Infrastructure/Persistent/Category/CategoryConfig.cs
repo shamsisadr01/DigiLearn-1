@@ -47,7 +47,7 @@ public class CourseCategoryRepository : BaseRepository<CourseCategory, CoreModul
             foreach (var child in children)
             {
                 var isAnyCourse = await Context.Courses
-                    .AnyAsync(f => f.CategoryId == category.Id || f.SubCategoryId == category.Id);
+                    .AnyAsync(f => f.CategoryId == child.Id || f.SubCategoryId == child.Id);
                 if (isAnyCourse)
                 {
                     throw new Exception("این دسته بندی دارای چندین دوره است");
